@@ -21,14 +21,15 @@ var eventPool = &sync.Pool{
 // Event represents a log event. It is instanced by one of the level method of
 // Logger and finalized by the Msg or Msgf method.
 type Event struct {
-	buf       []byte
-	w         LevelWriter
-	level     Level
-	done      func(msg string)
-	stack     bool            // enable error stack trace
-	ch        []Hook          // hooks from context
-	skipFrame int             // The number of additional frames to skip when printing the caller.
-	ctx       context.Context // Optional Go context for event
+	buf         []byte
+	w           LevelWriter
+	level       Level
+	done        func(msg string)
+	stack       bool            // enable error stack trace
+	callingFunc bool            // enable error stack trace
+	ch          []Hook          // hooks from context
+	skipFrame   int             // The number of additional frames to skip when printing the caller.
+	ctx         context.Context // Optional Go context for event
 }
 
 func putEvent(e *Event) {
@@ -65,6 +66,7 @@ func newEvent(w LevelWriter, level Level) *Event {
 	e.w = w
 	e.level = level
 	e.stack = false
+	e.callingFunc = false
 	e.skipFrame = 0
 	return e
 }
@@ -407,7 +409,7 @@ func (e *Event) Err(err error) *Event {
 		}
 	}
 	//RS EDIT
-	if e.stack && ErrorFuncMarshaler != nil {
+	if e.callingFunc && ErrorFuncMarshaler != nil {
 		switch m := ErrorFuncMarshaler(err).(type) {
 		case nil:
 		case LogObjectMarshaler:
@@ -435,12 +437,11 @@ func (e *Event) Stack() *Event {
 	return e
 }
 
-
 //RS EDIT
 
 func (e *Event) CallingFunc() *Event {
 	if e != nil {
-		e.stack = true
+		e.callingFunc = true
 	}
 	return e
 }
