@@ -1,4 +1,4 @@
-module github.com/gavipk/rs_zerolog/cmd/lint
+module github.com/rogue-syntax/rs_zerolog/cmd/lint
 
 go 1.15
 

@@ -14,8 +14,8 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/gavipk/rs_zerolog"
-	"github.com/gavipk/rs_zerolog/internal/cbor"
+	zerolog "github.com/rogue-syntax/rs_zerolog"
+	"github.com/rogue-syntax/rs_zerolog/internal/cbor"
 	"github.com/rs/xid"
 )
 

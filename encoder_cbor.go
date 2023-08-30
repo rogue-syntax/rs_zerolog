@@ -6,7 +6,7 @@ package zerolog
 // This file contains bindings to do binary encoding.
 
 import (
-	"github.com/gavipk/rs_zerolog/internal/cbor"
+	"github.com/rogue-syntax/rs_zerolog/internal/cbor"
 )
 
 var (

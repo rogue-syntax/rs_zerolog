@@ -9,8 +9,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/gavipk/rs_zerolog"
-	"github.com/gavipk/rs_zerolog/log"
+	zerolog "github.com/rogue-syntax/rs_zerolog"
+	"github.com/rogue-syntax/rs_zerolog/log"
 )
 
 // setup would normally be an init() function, however, there seems

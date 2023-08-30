@@ -8,8 +8,8 @@ import (
 	"io"
 	"testing"
 
-	"github.com/gavipk/rs_zerolog"
-	"github.com/gavipk/rs_zerolog/journald"
+	zerolog "github.com/rogue-syntax/rs_zerolog"
+	"github.com/rogue-syntax/rs_zerolog/journald"
 )
 
 func ExampleNewJournalDWriter() {

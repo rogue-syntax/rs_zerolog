@@ -10,8 +10,8 @@ import (
 
 	"net/http/httptest"
 
-	"github.com/gavipk/rs_zerolog"
-	"github.com/gavipk/rs_zerolog/hlog"
+	zerolog "github.com/rogue-syntax/rs_zerolog"
+	"github.com/rogue-syntax/rs_zerolog/hlog"
 )
 
 // fake alice to avoid dep

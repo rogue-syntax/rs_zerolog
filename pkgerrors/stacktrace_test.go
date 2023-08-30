@@ -9,8 +9,8 @@ import (
 	"regexp"
 	"testing"
 
-	"github.com/gavipk/rs_zerolog"
 	"github.com/pkg/errors"
+	zerolog "github.com/rogue-syntax/rs_zerolog"
 )
 
 func TestLogStack(t *testing.T) {

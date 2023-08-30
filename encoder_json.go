@@ -8,7 +8,8 @@ package zerolog
 
 import (
 	"encoding/base64"
-	"github.com/gavipk/rs_zerolog/internal/json"
+
+	"github.com/rogue-syntax/rs_zerolog/internal/json"
 )
 
 var (

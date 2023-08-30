@@ -6,9 +6,9 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/gavipk/rs_zerolog"
-	"github.com/gavipk/rs_zerolog/hlog/internal/mutil"
-	"github.com/gavipk/rs_zerolog/log"
+	zerolog "github.com/rogue-syntax/rs_zerolog"
+	"github.com/rogue-syntax/rs_zerolog/hlog/internal/mutil"
+	"github.com/rogue-syntax/rs_zerolog/log"
 	"github.com/rs/xid"
 )
 
