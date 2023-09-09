@@ -1,3 +1,28 @@
+# Fork Details:
+Modded the stack trace functionality to provide ability to log just the calling function and source code file - essentially just giving the first entry in the stack trace
+
+use: 
+
+Where you would usually include the following to enable log stack trace:
+```
+zerolog.ErrorStackMarshaler = pkgerrors.MarshalStack
+```
+And then to call the logger:
+```
+loggerObj.Error().Stack().Msg()
+```
+
+You can enable the function trace like this:
+```
+zerolog.ErrorFuncMarshaler = pkgerrors.MarshalCallingFunction
+```
+
+And then call the logger:
+```
+loggerObj.Error().CallingFunc().Msg()
+```
+
+
 # Zero Allocation JSON Logger
 
 [![godoc](http://img.shields.io/badge/godoc-reference-blue.svg?style=flat)](https://godoc.org/github.com/rogue-syntax/rs_zerolog) [![license](http://img.shields.io/badge/license-MIT-red.svg?style=flat)](https://raw.githubusercontent.com/rs/zerolog/master/LICENSE) [![Build Status](https://travis-ci.org/rs/zerolog.svg?branch=master)](https://travis-ci.org/rs/zerolog) [![Go Coverage](https://github.com/rogue-syntax/rs_zerolog/wiki/coverage.svg)](https://raw.githack.com/wiki/rs/zerolog/coverage.html)
