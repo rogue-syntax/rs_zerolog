@@ -406,6 +406,22 @@ func (e *Event) Err(err error) *Event {
 			e.Interface(ErrorStackFieldName, m)
 		}
 	}
+	//RS EDIT
+	if e.stack && ErrorFuncMarshaler != nil {
+		switch m := ErrorFuncMarshaler(err).(type) {
+		case nil:
+		case LogObjectMarshaler:
+			e.Object(ErrorFuncFieldName, m)
+		case error:
+			if m != nil && !isNilValue(m) {
+				e.Str(ErrorFuncFieldName, m.Error())
+			}
+		case string:
+			e.Str(ErrorFuncFieldName, m)
+		default:
+			e.Interface(ErrorFuncFieldName, m)
+		}
+	}
 	return e.AnErr(ErrorFieldName, err)
 }
 
