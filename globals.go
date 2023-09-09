@@ -75,6 +75,14 @@ var (
 	// ErrorStackMarshaler extract the stack from err if any.
 	ErrorStackMarshaler func(err error) interface{}
 
+	//RS EDIT
+	// ErrorFuncFieldName is the field name used for immediate calling function and source code file trace.
+	ErrorFuncFieldName = "func"
+
+	// ErrorFuncMarshaler extract the immediate calling function and file from err if any.
+	ErrorFuncMarshaler func(err error) interface{}
+	
+
 	// ErrorMarshalFunc allows customization of global error marshaling
 	ErrorMarshalFunc = func(err error) interface{} {
 		return err
