@@ -419,6 +419,16 @@ func (e *Event) Stack() *Event {
 	return e
 }
 
+
+//RS EDIT
+
+func (e *Event) CallingFunc() *Event {
+	if e != nil {
+		e.stack = true
+	}
+	return e
+}
+
 // Ctx adds the Go Context to the *Event context.  The context is not rendered
 // in the output message, but is available to hooks and to Func() calls via the
 // GetCtx() accessor. A typical use case is to extract tracing information from
