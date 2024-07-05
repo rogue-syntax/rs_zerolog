@@ -105,11 +105,11 @@ func (e *Event) Discard() *Event {
 //
 // NOTICE: once this method is called, the *Event should be disposed.
 // Calling Msg twice can have unexpected result.
-func (e *Event) Msg(msg string) {
+func (e *Event) Msg(msg string) string {
 	if e == nil {
-		return
+		return ""
 	}
-	e.msg(msg)
+	return e.msg(msg)
 }
 
 // Send is equivalent to calling Msg("").
@@ -140,7 +140,7 @@ func (e *Event) MsgFunc(createMsg func() string) {
 	e.msg(createMsg())
 }
 
-func (e *Event) msg(msg string) {
+func (e *Event) msg(msg string) string {
 	for _, hook := range e.ch {
 		hook.Run(e, e.level, msg)
 	}
@@ -157,6 +157,7 @@ func (e *Event) msg(msg string) {
 			fmt.Fprintf(os.Stderr, "zerolog: could not write event: %v\n", err)
 		}
 	}
+	return string(e.buf)
 }
 
 // Fields is a helper function to use a map or slice to set fields using type assertion.
